@@ -13,7 +13,7 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         ActivityLoginBinding binding = DataBindingUtil.setContentView (this, R.layout.activity_login);
-        LoginViewModel loginViewModel = new LoginViewModel ();
+        LoginViewModel loginViewModel = new LoginViewModel (this);
         binding.setLoginViewModel (loginViewModel);
     }
 

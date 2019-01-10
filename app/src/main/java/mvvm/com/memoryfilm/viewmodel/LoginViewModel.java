@@ -1,6 +1,8 @@
 package mvvm.com.memoryfilm.viewmodel;
 
+import android.app.Activity;
 import android.arch.lifecycle.ViewModel;
+import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,9 +31,10 @@ public class LoginViewModel extends ViewModel {
     private User user;
     private String userName;
     private String userPsw;
+    private Context context;
 
-    public LoginViewModel() {
-
+    public LoginViewModel(Context context) {
+        this.context = context;
     }
 
     public TextWatcher userNameChangeListener = new TextWatcher () {
@@ -112,6 +115,8 @@ public class LoginViewModel extends ViewModel {
                     if(e == null) {
                         User user = BmobUser.getCurrentUser (User.class);
                         Snackbar.make (view, "登录成功：" + user.getUsername (), Snackbar.LENGTH_LONG).show ();
+                        Activity activity = (Activity) context;
+                        activity.finish ();
                     } else {
                         Snackbar.make (view, "登录失败：" + e.getMessage (), Snackbar.LENGTH_LONG).show ();
                     }

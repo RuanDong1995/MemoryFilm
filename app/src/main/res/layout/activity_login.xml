@@ -32,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:maxLines="1"
                 android:layout_marginLeft="10dp"
                 android:addTextChangedListener="@{loginViewModel.userNameChangeListener}" />
         </LinearLayout>
@@ -50,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:maxLines="1"
                 android:layout_marginLeft="10dp"
                 android:addTextChangedListener="@{loginViewModel.pwdChangeListener}" />
         </LinearLayout>
@@ -80,14 +82,6 @@
                 android:onClick="@{loginViewModel.login}"
                 android:text="登录" />
 
-            <Button
-                android:id="@+id/btn_logout"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:onClick="@{loginViewModel.logout}"
-                android:text="退出" />
         </LinearLayout>
     </LinearLayout>
 </layout>
