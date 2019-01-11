@@ -35,14 +35,13 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initView() {
         mDataBinding = DataBindingUtil.setContentView (this, R.layout.activity_main);
-        mMainViewModel = new MainViewModel (this);
+        mMainViewModel = new MainViewModel (getSupportFragmentManager ());
         mDataBinding.setMainViewModel (mMainViewModel);
         initBottom ();
     }
 
     private void initBottom() {
-        mDataBinding.rgMainBottom.check (R.id.rb_home);
-
+        mDataBinding.rgMainBottom.check (R.id.rb_studio);
     }
 
 

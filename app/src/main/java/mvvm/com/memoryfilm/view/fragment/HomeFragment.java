@@ -14,6 +14,16 @@ import mvvm.com.memoryfilm.adapter.HomeTabAdapter;
 import mvvm.com.memoryfilm.databinding.HomeFragmentBinding;
 import mvvm.com.memoryfilm.viewmodel.HomeViewModel;
 
+/*******************************************************************
+ * HomeFragment.java  2019/1/11
+ * <P>
+ * 主界面Fragment<br/>
+ * <br/>
+ * </p>
+ * Copyright2016 by GNNT Company. All Rights Reserved.
+ *
+ * @author:Ruandong
+ ******************************************************************/
 public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
@@ -40,7 +50,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart ();
-        mAdapter = new HomeTabAdapter (getFragmentManager ());
+        //当使用fragment嵌套时，使用getChildFragmentManager ()
+        mAdapter = new HomeTabAdapter (getChildFragmentManager ());
         mBinding.viewPagerHome.setAdapter (mAdapter);
         mBinding.tabLayoutHome.setupWithViewPager (mBinding.viewPagerHome);
         for (int i = 0; i < mBinding.tabLayoutHome.getTabCount (); i++) {

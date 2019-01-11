@@ -1,9 +1,7 @@
 package mvvm.com.memoryfilm.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
-import android.content.Context;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.widget.RadioGroup;
 
@@ -27,22 +25,18 @@ import mvvm.com.memoryfilm.view.fragment.UserFragment;
  ******************************************************************/
 public class MainViewModel extends ViewModel {
 
-
-    private FragmentActivity activity;
     private FragmentManager mFragmentManager;
     private HomeFragment homeFragment = HomeFragment.newInstance ();
     private StudioFragment studioFragment = StudioFragment.newInstance ();
     private UserFragment userFragment = UserFragment.newInstance ();
 
-    public MainViewModel(Context context) {
-        this.activity = (FragmentActivity) context;
-        mFragmentManager = activity.getSupportFragmentManager ();
+    public MainViewModel(FragmentManager fm) {
+        this.mFragmentManager = fm;
     }
 
     public RadioGroup.OnCheckedChangeListener onCheckedChangeListener = new RadioGroup.OnCheckedChangeListener () {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
-
             switch (checkedId) {
                 case R.id.rb_home:
                     showFragment (homeFragment, "home");
@@ -56,24 +50,21 @@ public class MainViewModel extends ViewModel {
                 default:
                     break;
             }
-
-        }
-
-        private void showFragment(Fragment fragment, String tag) {
-            List<Fragment> fragments = mFragmentManager.getFragments ();
-            if(mFragmentManager == null){
-                return;
-            }
-            for (Fragment f : fragments) {
-                mFragmentManager.beginTransaction ().hide (f).commitAllowingStateLoss ();
-            }
-            if(!fragments.contains (fragment)) {
-                mFragmentManager.beginTransaction ().add (R.id.fl_main, fragment, tag).commit ();
-            }
-            mFragmentManager.beginTransaction ().show (fragment).commit ();
         }
     };
 
 
-
+    private void showFragment(Fragment fragment, String tag) {
+        List<Fragment> fragments = mFragmentManager.getFragments ();
+        if(!fragments.isEmpty ()) {
+            for (Fragment f : fragments) {
+                mFragmentManager.beginTransaction ().hide (f).commitAllowingStateLoss ();
+            }
+        }
+        if(!fragments.contains (fragment)) {
+            //add方法要使用三个参数这个
+            mFragmentManager.beginTransaction ().add (R.id.fl_main,fragment, tag).commitAllowingStateLoss ();
+        }
+        mFragmentManager.beginTransaction ().show (fragment).commitAllowingStateLoss ();
+    }
 }
