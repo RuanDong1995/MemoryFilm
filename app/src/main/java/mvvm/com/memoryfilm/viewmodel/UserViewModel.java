@@ -3,7 +3,6 @@ package mvvm.com.memoryfilm.viewmodel;
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.Observable;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.util.Log;

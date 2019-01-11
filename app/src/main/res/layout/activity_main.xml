@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
 
     <data>
@@ -11,49 +10,60 @@
             type="mvvm.com.memoryfilm.viewmodel.MainViewModel" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/view_pager_main"
+        <FrameLayout
+            android:id="@+id/fl_main"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_above="@id/tab_layout_main"
             android:alpha="0.5"
             android:background="@color/colorPrimaryDark" />
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout_main"
+        <RadioGroup
+            android:id="@+id/rg_main_bottom"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            app:tabIndicatorHeight="0dp">
+            android:orientation="horizontal"
+            android:onCheckedChanged="@{mainViewModel.onCheckedChangeListener}">
 
-            <android.support.design.widget.TabItem
-                android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/rb_home"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="1"
+                android:gravity="center"
+                android:checked="true"
                 android:layout_height="match_parent"
-                android:icon="@mipmap/ic_launcher"
+                android:button="@null" />
 
-                />
-
-            <android.support.design.widget.TabItem
-                android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/rb_studio"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="2"
+                android:gravity="center"
                 android:layout_height="match_parent"
-                android:icon="@mipmap/ic_launcher" />
+                android:button="@null" />
 
-            <android.support.design.widget.TabItem
-                android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/rb_user"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="3"
+                android:gravity="center"
                 android:layout_height="match_parent"
-                android:icon="@mipmap/ic_launcher" />
+                android:button="@null" />
+        </RadioGroup>
 
-        </android.support.design.widget.TabLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 </layout>

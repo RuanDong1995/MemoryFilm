@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,15 +10,23 @@
             type="mvvm.com.memoryfilm.viewmodel.HomeViewModel"/>
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".view.fragment.HomeFragment">
 
-        <TextView
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout_home"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:tabIndicatorColor="@color/colorPrimaryDark"
+            app:tabIndicatorHeight="1dp" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Hello" />
-
-    </FrameLayout>
+            />
+    </LinearLayout>
 </layout>

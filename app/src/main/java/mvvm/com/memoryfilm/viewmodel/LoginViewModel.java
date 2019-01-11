@@ -100,9 +100,11 @@ public class LoginViewModel extends ViewModel {
      * 账号密码登录
      */
     public void login(final View view) {
+        final Activity activity = (Activity)context;
         if(BmobUser.isLogin ()) {
             user = BmobUser.getCurrentUser (User.class);
             Snackbar.make (view, "已经登录：" + user.getUsername (), Snackbar.LENGTH_LONG).show ();
+            activity.finish ();
         } else {
             if(user == null) {
                 user = new User ();
@@ -115,7 +117,6 @@ public class LoginViewModel extends ViewModel {
                     if(e == null) {
                         User user = BmobUser.getCurrentUser (User.class);
                         Snackbar.make (view, "登录成功：" + user.getUsername (), Snackbar.LENGTH_LONG).show ();
-                        Activity activity = (Activity) context;
                         activity.finish ();
                     } else {
                         Snackbar.make (view, "登录失败：" + e.getMessage (), Snackbar.LENGTH_LONG).show ();
