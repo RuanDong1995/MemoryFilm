@@ -24,7 +24,7 @@ import mvvm.com.memoryfilm.viewmodel.HomeViewModel;
  *
  * @author:Ruandong
  ******************************************************************/
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     private HomeViewModel mViewModel;
     private HomeFragmentBinding mBinding;

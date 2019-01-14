@@ -7,6 +7,7 @@ public class ImageVO extends BmobObject {
     private String userName;
     private String title;
     private String info;
+    private User user;
 
     public String getUserName() {
         return userName;
@@ -30,5 +31,13 @@ public class ImageVO extends BmobObject {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

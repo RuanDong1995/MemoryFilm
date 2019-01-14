@@ -6,9 +6,12 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import mvvm.com.memoryfilm.model.ImageVO;
+import mvvm.com.memoryfilm.model.User;
 
 public class StudioViewModel extends ViewModel {
 
@@ -75,6 +78,7 @@ public class StudioViewModel extends ViewModel {
         imageVO.setTitle (title);
         imageVO.setUserName (name);
         imageVO.setInfo (info);
+        imageVO.setUser (BmobUser.getCurrentUser (User.class));
         imageVO.save (new SaveListener<String> () {
             @Override
             public void done(String s, BmobException e) {

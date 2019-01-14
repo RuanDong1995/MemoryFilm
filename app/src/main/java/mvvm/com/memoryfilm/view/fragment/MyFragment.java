@@ -18,7 +18,7 @@ import mvvm.com.memoryfilm.databinding.MyFragmentBinding;
 import mvvm.com.memoryfilm.model.ImageVO;
 import mvvm.com.memoryfilm.viewmodel.MyViewModel;
 
-public class MyFragment extends Fragment implements MyViewModel.OnDataChangedListener {
+public class MyFragment extends BaseFragment implements MyViewModel.OnDataChangedListener {
 
     private MyViewModel mViewModel;
     private MyFragmentBinding mBinding;
@@ -39,7 +39,7 @@ public class MyFragment extends Fragment implements MyViewModel.OnDataChangedLis
         super.onActivityCreated (savedInstanceState);
         mViewModel = new MyViewModel (this);
         mBinding.setMyViewModel (mViewModel);
-        // TODO: Use the ViewModel
+        mBinding.swipeFreshList.setOnRefreshListener (mViewModel.onRefreshListener);
     }
 
     @Override
@@ -53,5 +53,8 @@ public class MyFragment extends Fragment implements MyViewModel.OnDataChangedLis
         MyImageAdapter adapter = new MyImageAdapter (getActivity (),list);
         mBinding.rvMyFragment.setAdapter (adapter);
         mBinding.rvMyFragment.setLayoutManager (new LinearLayoutManager (getActivity ()));
+        mBinding.swipeFreshList.setRefreshing (false);
     }
+
+
 }

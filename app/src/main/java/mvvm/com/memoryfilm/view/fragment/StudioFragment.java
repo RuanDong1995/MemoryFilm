@@ -23,7 +23,7 @@ import mvvm.com.memoryfilm.viewmodel.StudioViewModel;
  *
  * @author:Ruandong
  ******************************************************************/
-public class StudioFragment extends Fragment {
+public class StudioFragment extends BaseFragment {
 
     private StudioViewModel mViewModel;
     private StudioFragmentBinding mBinding;
@@ -45,7 +45,6 @@ public class StudioFragment extends Fragment {
         super.onActivityCreated (savedInstanceState);
         mViewModel = new StudioViewModel ();
         mBinding.setStudioViewModel (mViewModel);
-        // TODO: Use the ViewModel
     }
 
 }

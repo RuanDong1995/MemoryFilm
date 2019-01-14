@@ -7,6 +7,7 @@ import cn.bmob.v3.Bmob;
 import mvvm.com.memoryfilm.R;
 import mvvm.com.memoryfilm.adapter.HomeTabAdapter;
 import mvvm.com.memoryfilm.databinding.ActivityMainBinding;
+import mvvm.com.memoryfilm.view.fragment.HomeFragment;
 import mvvm.com.memoryfilm.viewmodel.MainViewModel;
 
 /*******************************************************************
@@ -37,6 +38,7 @@ public class MainActivity extends BaseActivity {
         mDataBinding = DataBindingUtil.setContentView (this, R.layout.activity_main);
         mMainViewModel = new MainViewModel (getSupportFragmentManager ());
         mDataBinding.setMainViewModel (mMainViewModel);
+        mMainViewModel.showFragment (HomeFragment.newInstance (),"home");
         initBottom ();
     }
 
@@ -44,5 +46,9 @@ public class MainActivity extends BaseActivity {
         mDataBinding.rgMainBottom.check (R.id.rb_studio);
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy ();
+        mMainViewModel.logout();
+    }
 }

@@ -7,6 +7,8 @@ import android.widget.RadioGroup;
 
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import mvvm.com.memoryfilm.R;
 import mvvm.com.memoryfilm.view.fragment.HomeFragment;
 import mvvm.com.memoryfilm.view.fragment.StudioFragment;
@@ -54,7 +56,7 @@ public class MainViewModel extends ViewModel {
     };
 
 
-    private void showFragment(Fragment fragment, String tag) {
+    public void showFragment(Fragment fragment, String tag) {
         List<Fragment> fragments = mFragmentManager.getFragments ();
         if(!fragments.isEmpty ()) {
             for (Fragment f : fragments) {
@@ -66,5 +68,9 @@ public class MainViewModel extends ViewModel {
             mFragmentManager.beginTransaction ().add (R.id.fl_main,fragment, tag).commitAllowingStateLoss ();
         }
         mFragmentManager.beginTransaction ().show (fragment).commitAllowingStateLoss ();
+    }
+
+    public void logout() {
+        BmobUser.logOut ();
     }
 }

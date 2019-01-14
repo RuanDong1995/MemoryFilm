@@ -19,4 +19,5 @@ public class User extends BmobUser {
     private Observable<String> nickName;
 
 
+
 }
